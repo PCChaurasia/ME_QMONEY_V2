@@ -58,7 +58,5 @@ public class PortfolioTrade {
     return tradeType;
   }
   //solution
-  
-
 
 }
