@@ -32,7 +32,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class PortfolioManagerApplication {
 
-  private final static String TOKEN = "a58ab1169f7933842d39743b1d7b1626b83569ad";
+  private final static String TOKEN = "5a541a54cae7d8255efc0c03800103d3dcb2b1ce";
   public static String getToken(){
     return TOKEN;
   }
