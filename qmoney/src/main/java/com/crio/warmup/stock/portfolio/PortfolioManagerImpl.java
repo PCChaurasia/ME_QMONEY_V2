@@ -26,6 +26,14 @@ import java.util.List;
 //import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 //import javax.management.RuntimeErrorException;
+import java.util.Comparator;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 import org.springframework.web.client.RestTemplate;
 
 public class PortfolioManagerImpl implements PortfolioManager {
@@ -152,4 +160,11 @@ public class PortfolioManagerImpl implements PortfolioManager {
         }
     return annualizedReturn;
   }
+  private Comparator<AnnualizedReturn> getComparator() {
+    return Comparator.comparing(AnnualizedReturn::getAnnualizedReturn).reversed();
+  }
+
+
+
+
 }
