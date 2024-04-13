@@ -1,43 +1,17 @@
 
 package com.crio.warmup.stock.portfolio;
 
-import static java.time.temporal.ChronoUnit.DAYS;
-import static java.time.temporal.ChronoUnit.SECONDS;
-
 import com.crio.warmup.stock.dto.AnnualizedReturn;
 import com.crio.warmup.stock.dto.Candle;
 import com.crio.warmup.stock.dto.PortfolioTrade;
-import com.crio.warmup.stock.dto.TiingoCandle;
 import com.fasterxml.jackson.core.JsonProcessingException;
-// import com.fasterxml.jackson.databind.ObjectMapper;
-// import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.crio.warmup.stock.quotes.StockQuotesService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Arrays;
-// import java.util.Collection;
-// import java.util.Collections;
-// import java.util.Comparator;
 import java.util.List;
-// import java.util.concurrent.ExecutionException;
-// import java.util.concurrent.ExecutorService;
-// import java.util.concurrent.Executors;
-// import java.util.concurrent.Future;
-// import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-// import javax.management.RuntimeErrorException;
 import java.util.Comparator;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 import org.springframework.web.client.RestTemplate;
 
 public class PortfolioManagerImpl implements PortfolioManager {
@@ -52,6 +26,8 @@ public class PortfolioManagerImpl implements PortfolioManager {
   protected PortfolioManagerImpl(RestTemplate restTemplate) {
     this.restTemplate = restTemplate;
   }
+
+ 
 
 
 
@@ -70,9 +46,7 @@ public class PortfolioManagerImpl implements PortfolioManager {
 
 
 
-  // private Comparator<AnnualizedReturn> getComparator() {
-  // return Comparator.comparing(AnnualizedReturn::getAnnualizedReturn).reversed();
-  // }
+  
 
   // CHECKSTYLE:OFF
 
@@ -83,41 +57,26 @@ public class PortfolioManagerImpl implements PortfolioManager {
 
   public List<Candle> getStockQuote(String symbol, LocalDate from, LocalDate to)
       throws JsonProcessingException {
+         // String tiingoRestURL = buildUri(symbol, from, to);
+    // TiingoCandle[] tiingoCandleArray =
+    // restTemplate.getForObject(tiingoRestURL, TiingoCandle[].class);
+    // if (tiingoCandleArray == null)
+    // return new ArrayList<>();
+    // return Arrays.stream(tiingoCandleArray).collect(Collectors.toList());
 
     return stockQuotesService.getStockQuote(symbol, from, to);
+  }
 
-  //   if (from.compareTo(to) >= 0) {
-  //     throw new RuntimeException();
-  //   }
-  //   String url = buildUri(symbol, from, to);
-  //   String stocks = restTemplate.getForObject(url, String.class);
-  //   ObjectMapper objectMapper = getObjectMapper();
-  //   TiingoCandle[] stocksStarttoEnd = objectMapper.readValue(stocks, TiingoCandle[].class);
 
-  //   if (stocksStarttoEnd == null) {
-  //     return new ArrayList<Candle>();
-  //   } else {
-  //     List<Candle> stocklist = Arrays.asList(stocksStarttoEnd);
-  //     return stocklist;
-  //   }
+
+  // protected String buildUri(String symbol, LocalDate startDate, LocalDate endDate) {
+
+  //   String uriTemplate = "https://api.tiingo.com/tiingo/daily/" + symbol + "/prices?startDate="
+  //       + startDate + "&endDate=" + endDate + "&token=" + TOKEN;
+
+
+  //   return uriTemplate;
   // }
-
-  // private static ObjectMapper getObjectMapper() {
-  //   ObjectMapper objectMapper = new ObjectMapper();
-  //   objectMapper.registerModule(new JavaTimeModule());
-  //   return objectMapper;
-  }
-
-
-
-  protected String buildUri(String symbol, LocalDate startDate, LocalDate endDate) {
-
-    String uriTemplate = "https://api.tiingo.com/tiingo/daily/" + symbol + "/prices?startDate="
-        + startDate + "&endDate=" + endDate + "&token=" + TOKEN;
-
-
-    return uriTemplate;
-  }
 
 
   @Override
@@ -174,9 +133,7 @@ public class PortfolioManagerImpl implements PortfolioManager {
     return annualizedReturn;
   }
 
-  private Comparator<AnnualizedReturn> getComparator() {
-    return Comparator.comparing(AnnualizedReturn::getAnnualizedReturn).reversed();
-  }
+  
 
 
 

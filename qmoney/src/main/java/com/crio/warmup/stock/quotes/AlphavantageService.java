@@ -1,8 +1,6 @@
 
 package com.crio.warmup.stock.quotes;
 
-import static java.time.temporal.ChronoUnit.DAYS;
-import static java.time.temporal.ChronoUnit.SECONDS;
 import com.crio.warmup.stock.dto.AlphavantageCandle;
 import com.crio.warmup.stock.dto.AlphavantageDailyResponse;
 import com.crio.warmup.stock.dto.Candle;
@@ -15,7 +13,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import org.springframework.web.client.RestTemplate;
 
 public class AlphavantageService implements StockQuotesService {
