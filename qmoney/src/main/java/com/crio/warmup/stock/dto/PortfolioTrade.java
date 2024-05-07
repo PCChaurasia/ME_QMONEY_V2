@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class PortfolioTrade {
 
-  public PortfolioTrade() {  }
+  public PortfolioTrade() { }
 
   public static enum TradeType {
     BUY,
